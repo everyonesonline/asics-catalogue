@@ -717,6 +717,131 @@ MVR 2300/-
 </div>
 
 </div>
+<!-- PRODUCT -->
+<div class="product-card rounded-xl overflow-hidden">
+
+<img
+src="https://images.asics.com/is/image/asics/1041A370_001_SB_FR_GLB?$sfcc-product$"
+class="w-full object-contain bg-white hover:scale-105 transition duration-300">
+
+<div class="p-3">
+
+<h3 class="font-semibold text-base">
+ASICS COURT FF 3
+</h3>
+
+<p class="text-gray-500 text-sm mt-2">
+MVR 2300/-
+</p>
+
+</div>
+
+</div>
+
+<!-- PRODUCT -->
+<div class="product-card rounded-xl overflow-hidden">
+
+<img
+src="https://images.asics.com/is/image/asics/1041A370_100_SR_LT_GLB?$zoom$"
+class="w-full object-contain bg-white hover:scale-105 transition duration-300">
+
+<div class="p-3">
+
+<h3 class="font-semibold text-base">
+ASICS COURT FF 3
+</h3>
+
+<p class="text-gray-500 text-sm mt-2">
+MVR 2300/-
+</p>
+
+</div>
+
+</div>
+
+<!-- PRODUCT -->
+<div class="product-card rounded-xl overflow-hidden">
+
+<img
+src="https://i.ebayimg.com/images/g/cCUAAOSwb4hkwl9K/s-l1600.webp"
+class="w-full object-contain bg-white hover:scale-105 transition duration-300">
+
+<div class="p-3">
+
+<h3 class="font-semibold text-base">
+ASICS SKY ELITE FF 2
+</h3>
+
+<p class="text-gray-500 text-sm mt-2">
+MVR 2300/-
+</p>
+
+</div>
+
+</div>
+
+<!-- PRODUCT -->
+<div class="product-card rounded-xl overflow-hidden">
+
+<img
+src="https://cdn11.bigcommerce.com/s-21x65e8kfn/images/stencil/original/products/41286/151122/ASI12469_1000_1__48053.1688377208.jpg"
+class="w-full object-contain bg-white hover:scale-105 transition duration-300">
+
+<div class="p-3">
+
+<h3 class="font-semibold text-base">
+ASICS SKY ELITE FF 2
+</h3>
+
+<p class="text-gray-500 text-sm mt-2">
+MVR 2300/-
+</p>
+
+</div>
+
+</div>
+
+<!-- PRODUCT -->
+<div class="product-card rounded-xl overflow-hidden">
+
+<img
+src="https://ir.ozone.ru/s3/multimedia-p/wc1000/6496538413.jpg"
+class="w-full object-contain bg-white hover:scale-105 transition duration-300">
+
+<div class="p-3">
+
+<h3 class="font-semibold text-base">
+ASICS SKY ELITE FF 2
+</h3>
+
+<p class="text-gray-500 text-sm mt-2">
+MVR 2300/-
+</p>
+
+</div>
+
+</div>
+
+<!-- PRODUCT -->
+<div class="product-card rounded-xl overflow-hidden">
+
+<img
+src="https://i.ebayimg.com/images/g/tI8AAOSwOtZnS8rI/s-l1600.webp"
+class="w-full object-contain bg-white hover:scale-105 transition duration-300">
+
+<div class="p-3">
+
+<h3 class="font-semibold text-base">
+ASICS GEL-KAYANO
+</h3>
+
+<p class="text-gray-500 text-sm mt-2">
+MVR 2300/-
+</p>
+
+</div>
+
+</div>
 
 
 
@@ -997,76 +1122,115 @@ Engineered Momentum
 
 
 <script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
 const productsPerPage = 12;
 
-const productGrid = document.getElementById("productGrid");
 const products = Array.from(document.querySelectorAll(".product-card"));
 const pagination = document.getElementById("pagination");
 
 let currentPage = 1;
+
 const totalPages = Math.ceil(products.length / productsPerPage);
 
 function showPage(page){
 
     currentPage = page;
 
-    const start = (page-1) * productsPerPage;
+    const start = (page - 1) * productsPerPage;
     const end = start + productsPerPage;
 
     products.forEach((product,index)=>{
-        product.style.display =
-            (index >= start && index < end) ? "" : "none";
+
+        if(index >= start && index < end){
+            product.style.display = "block";
+        }else{
+            product.style.display = "none";
+        }
+
     });
 
     createPagination();
+
 }
+
 
 function createPagination(){
 
     pagination.innerHTML = "";
 
-    if(totalPages <= 1) return;
+    if(totalPages <= 1){
+        return;
+    }
+
 
     if(currentPage > 1){
 
-        const prev = document.createElement("button");
+        let prev = document.createElement("button");
+
         prev.innerHTML = "← Prev";
-        prev.className = "px-4 py-2 rounded border";
-        prev.onclick = ()=>showPage(currentPage-1);
+
+        prev.className = "px-4 py-2 rounded border bg-white";
+
+        prev.onclick = function(){
+            showPage(currentPage-1);
+        };
+
         pagination.appendChild(prev);
 
     }
 
+
     for(let i=1;i<=totalPages;i++){
 
-        const btn = document.createElement("button");
+        let btn = document.createElement("button");
 
-        btn.textContent = i;
+        btn.innerHTML = i;
 
-        btn.className =
-        i===currentPage
+        btn.className = 
+        i === currentPage
         ? "px-4 py-2 rounded bg-cyan-700 text-white"
-        : "px-4 py-2 rounded border";
+        : "px-4 py-2 rounded border bg-white";
 
-        btn.onclick = ()=>showPage(i);
+
+        btn.onclick = function(){
+            showPage(i);
+        };
+
 
         pagination.appendChild(btn);
 
     }
 
+
+
     if(currentPage < totalPages){
 
-        const next = document.createElement("button");
+        let next = document.createElement("button");
+
         next.innerHTML = "Next →";
-        next.className = "px-4 py-2 rounded border";
-        next.onclick = ()=>showPage(currentPage+1);
+
+        next.className = "px-4 py-2 rounded border bg-white";
+
+
+        next.onclick = function(){
+            showPage(currentPage+1);
+        };
+
+
         pagination.appendChild(next);
 
     }
 
 }
 
-window.onload = ()=>showPage(1);
+
+showPage(1);
+
+
+});
+
 </script>
 
 
